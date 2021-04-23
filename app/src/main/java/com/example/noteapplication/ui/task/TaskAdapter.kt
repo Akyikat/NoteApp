@@ -1,11 +1,11 @@
-package com.example.noteapp.ui.task
+package com.example.noteapplication.ui.task
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.noteapp.R
-import com.example.noteapp.data.model.Task
+import com.example.noteapplication.R
+import com.example.noteapplication.data.model.Task
 import kotlinx.android.synthetic.main.item_task.view.*
 
 class TaskAdapter(private var listener: ClickListener) : RecyclerView.Adapter<TasksViewHolder>() {
@@ -26,6 +26,13 @@ class TaskAdapter(private var listener: ClickListener) : RecyclerView.Adapter<Ta
         holder.itemView.setOnClickListener {
             listener.onItemClick(item)
         }
+        holder.itemView.cb_task.setOnClickListener {
+            listener.onCheckedClick(item)
+        }
+        holder.itemView.setOnLongClickListener {
+            listener.onRemoveItemClick(item, position)
+            true
+        }
     }
 
     fun addItems(data: MutableList<Task>) {
@@ -35,6 +42,8 @@ class TaskAdapter(private var listener: ClickListener) : RecyclerView.Adapter<Ta
 
     interface ClickListener {
         fun onItemClick(item: Task)
+        fun onCheckedClick(item: Task)
+        fun onRemoveItemClick(item: Task, position: Int)
     }
 
 }
@@ -42,23 +51,7 @@ class TaskAdapter(private var listener: ClickListener) : RecyclerView.Adapter<Ta
 class TasksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun bind(item: Task) {
         itemView.tv_task.text = item.content
+        val stateOfTask = item.completed ?: false
+        itemView.cb_task.isChecked = stateOfTask
     }
-
 }
-
-//fun main() {
-//    print(isPalindrom("dog", "adog"))
-//
-//}
-//
-//fun isPalindrom(input: String, compareWord: String): Boolean {
-//
-//    val compareWordAtCharArray = compareWord.toCharArray()
-//    var isPalindrom = false
-//      compareWordAtCharArray.forEach {
-//        if (input.contains(it)) isPalindrom = true
-//        else return false
-//    }
-//    return isPalindrom
-//}
-

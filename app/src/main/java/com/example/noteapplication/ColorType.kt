@@ -1,4 +1,4 @@
-package com.example.noteapp
+package com.example.noteapplication
 
 import android.graphics.Color
 
