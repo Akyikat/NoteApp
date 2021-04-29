@@ -2,15 +2,16 @@ package com.example.noteapplication.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
 abstract class BaseActivity<VM : ViewModel>(
-        private val layoutId: Int,
-        private val vmClass : Class<VM>
-) : AppCompatActivity() {
+    private val layoutId: Int,
+    val vmClass : Class<VM>) : AppCompatActivity() {
 
     lateinit var viewModel: VM
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
