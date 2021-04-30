@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
+import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.shape.CornerFamily
 
 
 fun Context.showToast(message: String?) {
@@ -12,6 +14,20 @@ fun Context.showToast(message: String?) {
 
 fun View.visible() {
 
+}
+fun ShapeableImageView.setCornerRadius(
+    topRight: Float = 0f,
+    topLeft: Float = 0f,
+    bottomRight: Float = 0f,
+    bottomLeft: Float = 0f
+) {
+    this.shapeAppearanceModel = this.shapeAppearanceModel
+        .toBuilder()
+        .setTopLeftCorner(CornerFamily.ROUNDED, topLeft)
+        .setTopRightCorner(CornerFamily.ROUNDED, topRight)
+        .setBottomLeftCorner(CornerFamily.ROUNDED, bottomLeft)
+        .setBottomRightCorner(CornerFamily.ROUNDED, bottomRight)
+        .build()
 }
 
 

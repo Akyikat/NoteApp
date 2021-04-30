@@ -1,5 +1,6 @@
 package com.example.noteapplication.ui.project
 
+import android.content.Intent
 import android.os.Handler
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noteapplication.R
 import com.example.noteapplication.base.BaseActivity
 import com.example.noteapplication.data.model.Project
+import com.example.noteapplication.ui.create_project.CreateProjectActivity
 import com.example.noteapplication.ui.task.TaskListActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,6 +22,14 @@ class ProjectActivity : BaseActivity<ProjectViewModel>(
     override fun setupViews() {
         setupRecyclerView()
         setupSearchView()
+        setupListener()
+    }
+
+    private fun setupListener() {
+        btn_add.setOnClickListener{
+            val intent = Intent(this, CreateProjectActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupRecyclerView() {

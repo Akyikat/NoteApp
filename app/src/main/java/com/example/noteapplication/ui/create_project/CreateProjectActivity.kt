@@ -7,6 +7,7 @@ import android.view.MenuItem
 import com.example.noteapplication.R
 import com.example.noteapplication.base.BaseActivity
 import com.example.noteapplication.showToast
+import kotlinx.android.synthetic.main.create_project_activity.*
 
 class CreateProjectActivity : BaseActivity<CreateProjectViewModel>(
     R.layout.create_project_activity,
@@ -26,7 +27,7 @@ class CreateProjectActivity : BaseActivity<CreateProjectViewModel>(
     }
 
     override fun setupViews() {
-        setSupportActionBar(toolbar)
+        setSupportActionBar(toolbar_add_project)
         supportActionBar?.title = resources.getString(R.string.create_project)
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
