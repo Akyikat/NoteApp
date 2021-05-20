@@ -62,8 +62,10 @@ class NotesListActivity : BaseActivity<NotesListViewModel>(
 
     }
 
-    override fun onCheckedClick(item: Task) {
-//        repository.changeStateOfTask(item.id)
+    var closedPosition: Int = 0
+    override fun onCheckedClick(item: Task, position: Int) {
+        viewModel.closeNote(item.id)
+        closedPosition = position
     }
 
     override fun onRemoveItemClick(item: Task, position: Int) {
